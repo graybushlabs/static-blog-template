@@ -1,0 +1,113 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<header class="m-0 p-0 pl-1 pr-1 bg-white">
+  <nav class="flex items-center justify-between left-0 right-0 bg-white">
+    <!-- brand -->
+    <div class="flex items-center justify-between">
+      <img
+        class="md:w-16 w-12 rounded-full"
+        src="/images/gblabs-logo_no-text.png"
+        alt="company logo"
+      />
+      <h2 class="hidden lg:block m-0 text-4xl">
+        <a class="active:no-underline p-1 no-underline brand" href="/"
+          >{SITE_TITLE}</a
+        >
+      </h2>
+    </div>
+
+    <!-- large view -->
+    <div class="hidden lg:block">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/services">Services</HeaderLink>
+      <HeaderLink href="/projects">Projects</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+    </div>
+
+    <!-- mobile view with hamburger menu -->
+    <div class="lg:hidden md:block flex flex-col relative">
+      <img id="menu-icon" src="/icons/menu.svg" class="w-8" />
+      <div id="mobile-menu" class="invisible">
+        <a class="text-4xl" href="/">Home</a>
+        <a class="text-4xl" href="/about">About</a>
+        <a class="text-4xl" href="/services">Services</a>
+        <a class="text-4xl" href="/projects">Projects</a>
+        <a class="text-4xl" href="/blog">Blog</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<style>
+  header {
+    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+  }
+  nav.fixed {
+    top: 0;
+    right: 0;
+    left: 0;
+    animation: 300ms linear 0s menu-move;
+  }
+  nav a {
+    padding: 1em 0.5em;
+    color: var(--black);
+    border-bottom: 4px solid transparent;
+    text-decoration: none;
+  }
+  nav a.active {
+    text-decoration: none;
+    border-bottom-color: var(--accent);
+  }
+  #mobile-menu {
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    background-color: white;
+    height: 100vh;
+    top: 49px;
+    left: calc(-100vw + 40px);
+    z-index: 1000;
+  }
+  #mobile-menu.invisible {
+    left: 0;
+  }
+  @keyframes menu-move {
+    from {
+      transform: translateY(-60px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+</style>
+<script>
+  const icon = document.querySelector("#menu-icon");
+  icon?.addEventListener("click", (e: Event) => {
+    let menu = document.querySelector("#mobile-menu");
+    menu?.classList.toggle("invisible");
+
+    return false;
+  });
+
+  // hide/show nav based on scroll direction
+  let scroll = 0;
+  let navElement = document.querySelector("nav");
+  window.onscroll = () => {
+    let currentScroll = window.scrollY;
+
+    if (scroll > currentScroll) {
+      navElement?.classList.add("fixed");
+    } else if (scroll < currentScroll) {
+      navElement?.classList.remove("fixed");
+      let menu = document.querySelector("#mobile-menu");
+      menu?.classList.add("invisible");
+    }
+
+    scroll = currentScroll;
+  };
+</script>

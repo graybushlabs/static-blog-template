@@ -1,0 +1,48 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import FlipCard from "../components/FlipCard.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import type { Card } from "../models/card";
+
+const cards: Card[] = [
+  {
+    title: "IT/Networking troubleshooting, install and repair",
+    items: [
+      "CompTIA A+ and N+",
+      "Microsoft MCP",
+      "Azure certified",
+      "Windows, Linux and Mac",
+    ],
+  },
+  {
+    title: "Custom Software Development",
+    items: [
+      "Over 10 years of experience",
+      "C#, TypeScript/JavaScript, SQL, C++",
+    ],
+  },
+  {
+    title: "3D Printing Services",
+    items: ["Print and design", "Repair", "Training"],
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section>
+        <h2 class="md:hidden">Services</h2>
+        <FlipCard {cards} />
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

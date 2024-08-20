@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/BaseLayout.astro";
+import type { Project } from "../models/project";
+
+const projects: Project[] = [
+  {
+    name: "NodeMCU",
+    description:
+      "A collection of projects using the NodeMCU development board.",
+    link: new URL("https://github.com/graybushlabs/NodeMCU"),
+  },
+  {
+    name: "LK5 Pro OrcaSlicer",
+    description: "An OrcaSlicer profile for the Longer LK5 Pro.",
+    link: new URL("https://github.com/graybushlabs/lk5-pro-orcaslicer"),
+  },
+];
+---
+
+<Layout
+  title="Projects"
+  description="Graybush Labs projects list"
+  pubDate={new Date("August 08 2024")}
+  preview="/blog-placeholder-2.jpg"
+>
+  <ul class="list-none">
+    {
+      projects.map((project) => (
+        <li class="mb-8">
+          <a
+            class="text-black no-underline hover:text-black"
+            href={project.link}
+            target="_blank"
+          >
+            <div class="hover:underline">Name: {project.name}</div>
+            <div>Description: {project.description}</div>
+          </a>
+        </li>
+      ))
+    }
+    <li>
+      We are always working on something. Check the YouTube channel for the most
+      recent stuff.
+    </li>
+  </ul>
+</Layout>

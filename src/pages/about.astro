@@ -1,0 +1,69 @@
+---
+import Layout from "../layouts/BaseLayout.astro";
+---
+
+<Layout
+  title="About Me"
+  description="about me"
+  pubDate={new Date("July 08 2024")}
+  preview="/blog-placeholder-about.jpg"
+>
+  <h2 class="text-xl font-bold underline">About Me</h2>
+  <div class="pt-2">
+    Right now its just me. I work in IT and I try to make things on the side.
+    This is my little slice of the internet and I hope you learn something new
+    and/or cool by coming here.
+    <br />
+    <br />
+    I am largely self-taught but I did go to school for some things. I have an A.S.
+    in Managed Information Systems (2009) from a technical college that no longer
+    exists. I obtained several certificates while in this program (CompTIA, Microsoft,
+    and Cisco). After that I spent time doing networking and systems support.
+    <br />
+    <br />
+    I always liked software but I didn't think I could get into it because I didn't
+    have a degree. So, I enrolled at a local College that had a Web Developer certificate
+    program. I did well but my old grades caught up to me and brought down my average
+    and I lost my financial aid. While I was attending school I was working support
+    for a small software company and I saw they were hiring a developer. I didn't
+    think that I would get the position but I let them know I was interested and
+    enrolled in a program. It was a good thing I did because the lead dev told me
+    that they wanted to bring on a few junior devs to help with a new project. They
+    offered me a project to work on when the support queue was slow. A few weeks
+    later we had a meeting where I showed them the progress I had made and a short
+    report with analysis and suggestions. I guess they liked it because they offered
+    me a job and I stuck around for about 3 years.
+    <br />
+    <br />
+    Since then I have worked for several companies but I mostly have been doing contracts.
+    I like this kind of work more than being a W-2 employee, though the stable income
+    is nice. I like working on different things and get bored doing the same tasks
+    every day. This is the main reason I got into software development. I can use
+    software to help with nearly any type of work and that enables me to learn about
+    all kinds of things.
+    <br />
+    <br />
+    Basically, I am a nerd and want to learn about all the things.
+  </div>
+
+  <div class="pt-2">
+    My current interests are:
+    <ul class="list-disc list-inside">
+      <li>3d printing and design</li>
+      <li>Gardening and Hydroponics</li>
+      <li>Home Automation</li>
+    </ul>
+  </div>
+
+  <div class="pt-2">
+    You can also join the
+    <a href="https://discord.gg/4x7wExR" target="_blank">discord server</a>
+    and ask questions.
+  </div>
+
+  <div class="pt-2">
+    If you are looking for
+    <a [routerLink]="['/services']">professional services</a>, we offer that
+    too!
+  </div>
+</Layout>

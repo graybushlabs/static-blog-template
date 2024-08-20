@@ -1,0 +1,59 @@
+---
+const today = new Date();
+---
+
+<footer class="flex flex-col items-center">
+  <!-- copyright -->
+  &copy; {today.getFullYear()} JS Designs. All rights reserved.
+  <!-- socials -->
+  <div class="flex flex-row justify-between w-80">
+    <a
+      class="flex flex-row mr-2 items-center"
+      href="https://www.youtube.com/@GraybushLabs"
+      target="_blank"
+    >
+      <img
+        src="/images/socials/youtube.svg"
+        alt="YouTube logo"
+        width="24px"
+        class="mr-1"
+      />
+      YouTube
+    </a>
+    <a
+      class="flex flex-row mr-2 items-center"
+      href="https://discord.com/channels/339121449686269964/355536124363538433"
+      target="_blank"
+    >
+      <img
+        src="/images/socials/discord.svg"
+        alt="Discord logo"
+        width="24px"
+        class="mr-1"
+      />
+      Discord
+    </a>
+    <a
+      class="flex flex-row items-center"
+      href="https://github.com/graybushlabs"
+      target="_blank"
+    >
+      <img
+        src="/images/socials/github.svg"
+        alt="Github logo"
+        width="24px"
+        class="mr-1"
+      />
+      Github
+    </a>
+  </div>
+</footer>
+<style>
+  footer {
+    padding: 2em 1em 2em 1em;
+    background-color: whitesmoke;
+    /* background: linear-gradient(var(--gray-gradient)) no-repeat; */
+    color: rgb(var(--gray));
+    text-align: center;
+  }
+</style>

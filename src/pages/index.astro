@@ -1,0 +1,53 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>     
+      <h2 class="text-5xl font-bold text-light-yellow mb-16">
+        Welcome to the laboratory
+      </h2>
+
+      <p class="mb-16">
+        We like to build things around here. If you like to tinker, or want to
+        start, take a look around. We have some projects on <a
+          href="https://github.com/graybushlabs"
+          target="_blank"
+          >GitHub
+        </a> and the <a
+          href="https://www.youtube.com/@GraybushLabs"
+          target="_blank">YouTube</a
+        >
+        Channel. We do a little bit of everything from software to 3d printing to
+        hydroponics.
+      </p>
+
+      <p class="mb-16">
+        Read about my <a href="/blog/my-lk5-setup/">3d printer upgrades</a> on the
+        <a href="/blog">Blog</a>
+      </p>
+
+      <p class="mb-16">
+        Need some help with your project? We offer several <a href="/services"
+          >services</a
+        > and have competitive rates.
+      </p>
+
+      <p class="mb-16">
+        Join me on <a href="https://discord.gg/4x7wExR" target="_blank"
+          >Discord</a
+        >. I would love to hear feedback or talk about what you are working on.
+      </p>
+    </main>
+    <Footer />
+  </body>
+</html>

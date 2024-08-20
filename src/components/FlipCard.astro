@@ -1,0 +1,68 @@
+---
+import type { Card } from "../models/card";
+
+interface Props {
+  cards: Card[];
+}
+const { cards } = Astro.props;
+---
+
+<style lang="scss">
+  .cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .card {
+    perspective: 1000px;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    width: 400px;
+    height: 400px;
+    margin: 1em;
+    box-shadow: var(--box-shadow);
+    z-index: -1;
+    &:hover {
+      transform: rotateY(180deg);
+    }
+  }
+  .front,
+  .back {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .front {
+    background-color: var(--accent-dark);
+    color: white;
+  }
+  .back {
+    transform: rotateY(180deg);
+    background-color: white;
+    color: var(--accent-dark);
+    justify-content: space-around;
+  }
+</style>
+
+<div class="cards">
+  {
+    cards.map((card) => (
+      <div class="card">
+        <div class="front">{card.title}</div>
+        <div class="back">
+          {card.items.map((item) => (
+            <div class="">{item}</div>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>
