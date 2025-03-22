@@ -1,0 +1,55 @@
+<script is:inline>
+    const copyToClipboard = (value) => {
+      navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
+        if (result.state === "granted" || result.state === "prompt") {
+          navigator.clipboard.writeText(value).then(
+            () => {},
+            () => {
+              alert("Failed to write to clipboard!");
+            }
+          );
+        }
+      });
+    };
+  
+    const resetButtonText = () => {
+      codeSections.forEach((section) => {
+        let button = section.querySelector("button");
+        button.innerText = "Copy";
+      });
+    };
+  
+    const extractText = (element) => {
+      let allText = "";
+      for (const child of element.children) {
+        if (child.nodeName !== "BUTTON") {
+          allText += child.innerText;
+        }
+      }
+  
+      return allText;
+    };
+  
+    let codeSections = document.querySelectorAll("pre");
+    codeSections.forEach((entry) => {
+      let copyButton = document.createElement("button");
+      copyButton.innerText = "Copy";
+      // this is tailwind specific. Change as needed.
+      copyButton.classList.add(
+        "absolute",
+        "top-1",
+        "right-2",
+        "white",
+        "text-sm",
+        "p-1",
+        "hover:bg-white/[.3]",
+        "hover:rounded"
+      );
+      copyButton.onclick = (e) => {
+        resetButtonText();
+        copyButton.innerText = "Copied!";
+        copyToClipboard(extractText(entry));
+      };
+      entry.appendChild(copyButton);
+    });
+  </script>
